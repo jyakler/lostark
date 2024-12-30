@@ -446,11 +446,11 @@ export class RefiningComponent {
     this.bindedPath = bindedOptimal.path;
 
     const result = {
-      optimal: Number(this.optimalPrice.toFixed(2)),
-      full: Number(this.fullBreathPrice.toFixed(2)),
-      no: Number(this.noBreathPrice.toFixed(2)),
-      bindAll: Number(this.bindedAllPrice.toFixed(2)),
-      bind: Number(this.bindedPrice.toFixed(2)),
+      optimal: Number(this.optimalPrice.toFixed(0)),
+      full: Number(this.fullBreathPrice.toFixed(0)),
+      no: Number(this.noBreathPrice.toFixed(0)),
+      bindAll: Number(this.bindedAllPrice.toFixed(0)),
+      bind: Number(this.bindedPrice.toFixed(0)),
     };
     return result;
   }
