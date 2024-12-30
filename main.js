@@ -1,5 +1,4 @@
 import {
-  apikey,
   auctionPath,
   gemList,
   host,
