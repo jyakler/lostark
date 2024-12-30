@@ -13,7 +13,14 @@ export const gemList = [
   "10레벨 겁화의 보석",
   "10레벨 작열의 보석",
 ];
-
+export const accesoryList = [
+  "중단일",
+  "상단일",
+  "중중",
+  "상하",
+  "상중",
+  "상상",
+];
 export const itemList = [
   "운명의 수호석",
   "운명의 파괴석",
@@ -25,6 +32,7 @@ export const itemList = [
   "운명의 파편 주머니(중)",
   "운명의 파편",
   ...gemList,
+  ...accesoryList,
 ];
 
 const refineCal = new RefiningComponent();
@@ -292,5 +300,47 @@ export const table = [
     upgrade: 0.19,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "23").bind,
+  },
+  {
+    name: "중단일 1부위",
+    upgrade: 0.88,
+    inputs: ["중단일"],
+    calculation: (values) => values["중단일"],
+  },
+  {
+    name: "상단일 1부위",
+    upgrade: 1.8,
+    inputs: ["상단일"],
+    calculation: (values) => values["상단일"],
+  },
+  {
+    name: "중단일->중중 1부위",
+    upgrade: 0.88,
+    inputs: ["중단일", "중중"],
+    calculation: (values) => values["중중"] - values["중단일"],
+  },
+  {
+    name: "중단일->상하 1부위",
+    upgrade: 1,
+    inputs: ["중단일", "상하"],
+    calculation: (values) => values["상하"] - values["중단일"],
+  },
+  {
+    name: "중단일->상중 1부위",
+    upgrade: 1.8,
+    inputs: ["중단일", "상중"],
+    calculation: (values) => values["상중"] - values["중단일"],
+  },
+  {
+    name: "상단일->상중 1부위",
+    upgrade: 0.8,
+    inputs: ["상단일", "상중"],
+    calculation: (values) => values["상중"] - values["상단일"],
+  },
+  {
+    name: "상단일->상상 1부위",
+    upgrade: 1.8,
+    inputs: ["상단일", "상상"],
+    calculation: (values) => values["상상"] - values["상단일"],
   },
 ];
