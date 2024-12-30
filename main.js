@@ -74,7 +74,6 @@ async function calculateTable() {
     }
     entry.specup = Math.ceil(entry.price / entry.upgrade);
   });
-  console.log("table: ", table);
   await printTable();
 }
 

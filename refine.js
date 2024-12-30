@@ -201,7 +201,8 @@ export function optimize(
         jangin + (prob / JANGIN_ACCUMULATE_DIVIDER) * table.janginMultiplier,
         globalProb * (1 - prob),
         i,
-        subtractAmount(subtractAmount(bindedLeft, table.amount), breathes)
+        bindedMap
+        // subtractAmount(subtractAmount(bindedLeft, table.amount), breathes)
       );
       const validPath = Array.isArray(path) ? path : [path];
       prices.push(basePrice + breathPrice + (1 - prob) * failPrice);
@@ -260,7 +261,6 @@ export function fixed(
     const breath = isBindedEmpty
       ? defaultBreath
       : buildBreath(priceMap, table.breath, bindedLeft, baseProb);
-
     if (globalProb <= 0) {
       return {
         price: 0,
@@ -282,13 +282,12 @@ export function fixed(
         ],
       };
     }
-
     const {
       price: breathPrice,
       prob: breathProb,
       breathes,
     } = breath[breathCount];
-
+    // console.log("middle: ", breathPrice, breathProb, breathes);
     const prob =
       Math.round(
         Math.min(currentProb + additionalProb + breathProb, 1) * 10000
@@ -297,7 +296,8 @@ export function fixed(
       Math.min(currentProb + baseProb * 0.1, baseProb * 2),
       jangin + (prob / JANGIN_ACCUMULATE_DIVIDER) * table.janginMultiplier,
       globalProb * (1 - prob),
-      subtractAmount(subtractAmount(bindedLeft, table.amount), breathes)
+      bindedMap
+      // subtractAmount(subtractAmount(bindedLeft, table.amount), breathes)
     );
 
     return {
@@ -420,12 +420,13 @@ export class RefiningComponent {
     bindedMap["빙하의 숨결"] = 1e9;
     bindedMap["아비도스 융화 재료"] = 0;
 
-    const bindedAllOptimal = optimize(
+    const bindedAllOptimal = fixed(
       table,
       { ...localStorage },
       bindedMap,
       itemInfo.probFromFailure / 100,
-      itemInfo.jangin / 100
+      itemInfo.jangin / 100,
+      Object.keys(table.breath).length
     );
 
     this.bindedAllPrice = bindedAllOptimal.price;

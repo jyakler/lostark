@@ -196,30 +196,30 @@ export const table = [
     calculation: () => refineCal.calculate("weapon", "t4_1590", "25").bind,
   },
 
-  {
-    name: "무기18,19강 (골드+아비도스 외 귀속)",
-    upgrade: 1.3,
-    inputs: [],
-    calculation: () => refineCal.calculate("weapon", "t4_1590", "19").bindAll,
-  },
-  {
-    name: "무기20,21강 (골드+아비도스 외 귀속)",
-    upgrade: 1.3,
-    inputs: [],
-    calculation: () => refineCal.calculate("weapon", "t4_1590", "21").bindAll,
-  },
-  {
-    name: "무기22,23강 (골드+아비도스 외 귀속)",
-    upgrade: 1.3,
-    inputs: [],
-    calculation: () => refineCal.calculate("weapon", "t4_1590", "23").bindAll,
-  },
-  {
-    name: "무기24,25강 (골드+아비도스 외 귀속)",
-    upgrade: 1.3,
-    inputs: [],
-    calculation: () => refineCal.calculate("weapon", "t4_1590", "25").bindAll,
-  },
+  // {
+  //   name: "무기18,19강 (골드+아비도스 외 귀속)",
+  //   upgrade: 1.3,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("weapon", "t4_1590", "19").bindAll,
+  // },
+  // {
+  //   name: "무기20,21강 (골드+아비도스 외 귀속)",
+  //   upgrade: 1.3,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("weapon", "t4_1590", "21").bindAll,
+  // },
+  // {
+  //   name: "무기22,23강 (골드+아비도스 외 귀속)",
+  //   upgrade: 1.3,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("weapon", "t4_1590", "23").bindAll,
+  // },
+  // {
+  //   name: "무기24,25강 (골드+아비도스 외 귀속)",
+  //   upgrade: 1.3,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("weapon", "t4_1590", "25").bindAll,
+  // },
   {
     name: "방어구15,16강 (최적)",
     upgrade: 0.19,
@@ -244,30 +244,30 @@ export const table = [
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "23").optimal,
   },
-  {
-    name: "방어구15,16강 (골드+아비도스 외 귀속)",
-    upgrade: 0.19,
-    inputs: [],
-    calculation: () => refineCal.calculate("armor", "t4_1590", "16").bindAll,
-  },
-  {
-    name: "방어구17,18,19강 (골드+아비도스 외 귀속)",
-    upgrade: 0.19,
-    inputs: [],
-    calculation: () => refineCal.calculate("armor", "t4_1590", "19").bindAll,
-  },
-  {
-    name: "방어구20,21강 (골드+아비도스 외 귀속)",
-    upgrade: 0.19,
-    inputs: [],
-    calculation: () => refineCal.calculate("armor", "t4_1590", "21").bindAll,
-  },
-  {
-    name: "방어구22,23강 (골드+아비도스 외 귀속)",
-    upgrade: 0.19,
-    inputs: [],
-    calculation: () => refineCal.calculate("armor", "t4_1590", "23").bindAll,
-  },
+  // {
+  //   name: "방어구15,16강 (골드+아비도스 외 귀속)",
+  //   upgrade: 0.19,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("armor", "t4_1590", "16").bindAll,
+  // },
+  // {
+  //   name: "방어구17,18,19강 (골드+아비도스 외 귀속)",
+  //   upgrade: 0.19,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("armor", "t4_1590", "19").bindAll,
+  // },
+  // {
+  //   name: "방어구20,21강 (골드+아비도스 외 귀속)",
+  //   upgrade: 0.19,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("armor", "t4_1590", "21").bindAll,
+  // },
+  // {
+  //   name: "방어구22,23강 (골드+아비도스 외 귀속)",
+  //   upgrade: 0.19,
+  //   inputs: [],
+  //   calculation: () => refineCal.calculate("armor", "t4_1590", "23").bindAll,
+  // },
 
   {
     name: "방어구15,16강 (골드+아비도스+숨결 외 귀속)",
