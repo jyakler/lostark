@@ -333,6 +333,9 @@ export class RefiningComponent {
   fullBreathPrice = 0;
   fullBreathPath = [];
 
+  bindedAllPrice = 0;
+  bindedAllPath = [];
+
   bindedPrice = 0;
   bindedPath = [];
 
@@ -409,14 +412,27 @@ export class RefiningComponent {
     this.fullBreathPath = fullBreath.path;
 
     //귀속
-    bindedMap = { ...localStorage };
     bindedMap["운명의 돌파석"] = 1e9;
     bindedMap["운명의 수호석"] = 1e9;
     bindedMap["운명의 파괴석"] = 1e9;
     bindedMap["운명의 파편"] = 1e9;
     bindedMap["용암의 숨결"] = 1e9;
     bindedMap["빙하의 숨결"] = 1e9;
+    bindedMap["아비도스 융화 재료"] = 0;
 
+    const bindedAllOptimal = optimize(
+      table,
+      { ...localStorage },
+      bindedMap,
+      itemInfo.probFromFailure / 100,
+      itemInfo.jangin / 100
+    );
+
+    this.bindedAllPrice = bindedAllOptimal.price;
+    this.bindedAllPath = bindedAllOptimal.path;
+
+    bindedMap["용암의 숨결"] = 0;
+    bindedMap["빙하의 숨결"] = 0;
     const bindedOptimal = optimize(
       table,
       { ...localStorage },
@@ -432,6 +448,7 @@ export class RefiningComponent {
       optimal: Number(this.optimalPrice.toFixed(2)),
       full: Number(this.fullBreathPrice.toFixed(2)),
       no: Number(this.noBreathPrice.toFixed(2)),
+      bindAll: Number(this.bindedAllPrice.toFixed(2)),
       bind: Number(this.bindedPrice.toFixed(2)),
     };
     return result;

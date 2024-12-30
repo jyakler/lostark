@@ -234,13 +234,13 @@ async function getDataFromApi() {
     localStorage.getItem("lastUpdated")
   ).getTime();
   const currentTime = new Date().getTime();
-  // if ((currentTime - lastUpdatedTime) / (1000 * 60) < 5) {
-  //   displayMessage(
-  //     "너무 자주 API키로 가격을 불러오고 있습니다. (최소 5분제한)",
-  //     "message2"
-  //   );
-  //   return;
-  // }
+  if ((currentTime - lastUpdatedTime) / (1000 * 60) < 5) {
+    displayMessage(
+      "너무 자주 API키로 가격을 불러오고 있습니다. (최소 5분제한)",
+      "message2"
+    );
+    return;
+  }
   try {
     await getAutctionPrice();
     await getMarketPrice();
