@@ -25,18 +25,19 @@ function displayMessage(message, id) {
 function updateStorage(marketData = 0) {
   // event.preventDefault();
   let inputs;
-  let scatter = document.getElementById("운명의 파편").value ?? 1e9;
+  let scatter;
   // let scatter = 10e9;
   if (marketData === 0) {
     inputs = document.querySelectorAll("[name='item']");
+    scatter = document.getElementById("운명의 파편").value ?? 0.2;
     inputs.forEach((input) => {
       const key = input.id;
       const value = input.value;
       localStorage.setItem(key, value);
     });
   } else {
-    // console.log(marketData);
     inputs = marketData;
+    scatter = 1e9;
     inputs.forEach((input) => {
       if (input.Name === "운명의 파편 주머니(소)") {
         scatter = Math.min(scatter, input.YDayAvgPrice / 1000);
@@ -233,13 +234,13 @@ async function getDataFromApi() {
     localStorage.getItem("lastUpdated")
   ).getTime();
   const currentTime = new Date().getTime();
-  if ((currentTime - lastUpdatedTime) / (1000 * 60) < 5) {
-    displayMessage(
-      "너무 자주 API키로 가격을 불러오고 있습니다. (최소 5분제한)",
-      "message2"
-    );
-    return;
-  }
+  // if ((currentTime - lastUpdatedTime) / (1000 * 60) < 5) {
+  //   displayMessage(
+  //     "너무 자주 API키로 가격을 불러오고 있습니다. (최소 5분제한)",
+  //     "message2"
+  //   );
+  //   return;
+  // }
   try {
     await getAutctionPrice();
     await getMarketPrice();
