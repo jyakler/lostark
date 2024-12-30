@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>스펙업 골드 효율 계산기</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        height: 80%;
+        font-size: small;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: left;
+      }
+      #content > div {
+        height: 100px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+      #scroll {
+        height: 700px; /* Set an appropriate height */
+        overflow-y: auto; /* Enable vertical scrolling only */
+      }
+      #left {
+        float: left;
+        width: 50%;
+      }
+      #right {
+        float: right;
+        width: 50%;
+      }
+      #bottom {
+        border-top: 1px solid black;
+        clear: both;
+      }
+      .box {
+        display: inline-block;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 2px solid #ccc;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .hidden-text {
+        display: none;
+        background-color: #e0e0e0;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div id="left">
+        <h2>스펙업 골드 효율 계산기</h2>
+
+        <!-- Part 1 -->
+        <label for="apiToken">Enter API Token:</label><br />
+        <input type="text" id="apiToken" name="apiToken" /><br />
+        <button onclick="saveApiToken()">Save</button>
+        <p id="message" style="color: green"></p>
+
+        <!-- Special Thanks to-->
+        <div class="box" id="box">Thanks to</div>
+        <div class="box" id="box2">설명서</div>
+        <div class="hidden-text" id="hiddenText">
+          최적 강화로직 코드 =
+          <a href="https://github.com/icepeng/loa-calc">icepang님</a><br />
+          스펙업 효율 수치 참고 =
+          <a href="https://www.youtube.com/@PortiaOfficial">포피셜 Youtube</a>
+        </div>
+        <div class="hidden-text" id="hiddenText2">
+          <b>0.</b> API키 가져오는 방법은 구글 검색
+          <a href="https://developer-lostark.game.onstove.com/"
+            >로아 개발자 사이트</a
+          >
+          <br />
+          <b>1.</b> API키 복사 붙여넣기하고 SAVE 버튼 클릭<br />
+
+          <b>2.</b> 모든 재료는 1개당 가격 (파괴석, 수호석, 파편)<br />
+          <b>3.</b> API키로 가져온 재료 가격은 전날 평균 가격 (보석은 실시간
+          최저가) <br />
+          <b>4.</b> 강화관련 (골드+아비도스 외 귀속) 는 풀숨기준 그 외는
+          아이스팽 평균비용로직 사용<br />
+          <b>5.</b> 상승폭은 포피셜 유튜브 기준<br />
+          <b style="font-size: large">계산하기 버튼 누르세요</b>
+          <br /><br />api가격가져오기 실패시 본인 api키 확인
+        </div>
+        <!-- Part 2 -->
+        <h3>가격</h3>
+        <b style="font-size: 14px">last updated</b>
+        <p id="lastUpdated" style="font-size: 14px"></p>
+        <div id="scroll">
+          <div id="itemList"></div>
+          <!-- Add more as needed... -->
+          <button onclick="updateStorage()">계산하기</button>
+          <button onclick="getDataFromApi()">api가격가져오기</button><br />
+          <span>API가격 가져오기는 서버상황에 따라 시간이 걸릴 수 있습니다</span
+          ><br />
+          <p id="message2" style="color: green"></p>
+        </div>
+      </div>
+
+      <!-- Part 3 -->
+      <div id="right">
+        <h3>스펙업 효율 계산</h3>
+        <div id="scroll">
+          <table id="calculatedTable">
+            <thead>
+              <tr>
+                <th>이름</th>
+                <th>상승폭 (%)</th>
+                <th>총 비용</th>
+                <th>1%당 비용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Populate dynamically based on cookies -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="const.js" type="module"></script> -->
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
