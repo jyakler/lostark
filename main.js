@@ -93,29 +93,44 @@ async function printTable() {
   var resultTable = document.getElementById("calculatedTable");
   console.log(table);
   table.forEach(function (table) {
-    var row = resultTable.insertRow(-1);
+    var row = tableBody.insertRow(-1);
     row.insertCell(0).innerText = table.name;
     row.insertCell(1).innerText = table.upgrade;
     row.insertCell(2).innerText = table.price;
     row.insertCell(3).innerText = table.specup;
   });
 }
+let sortState = {};
+function sortTable(columnIndex) {
+  const tbody = document.querySelector("#calculatedTable tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
 
-// function getCookie(name) {
-//   var nameEquals = name + "=";
-//   var decodedCookie = decodeURIComponent(document.cookie);
-//   var ca = decodedCookie.split(";");
-//   for (var i = 0; i < ca.length; i++) {
-//     var c = ca[i];
-//     while (c.charAt(0) == " ") {
-//       c = c.substring(1);
-//     }
-//     if (c.indexOf(nameEquals) === 0) {
-//       return c.substring(nameEquals.length, c.length);
-//     }
-//   }
-//   return null;
-// }
+  const isNumericColumn = columnIndex > 0; // All columns except "이름" are numeric
+
+  // Check current sort state for the column, default to descending
+  const currentSortOrder = sortState[columnIndex] || "desc";
+  const newSortOrder = currentSortOrder === "desc" ? "asc" : "desc";
+
+  // Sort rows in descending order
+  rows.sort((rowA, rowB) => {
+    const cellA = rowA.children[columnIndex].innerText;
+    const cellB = rowB.children[columnIndex].innerText;
+
+    // Parse values as numbers for numeric columns
+    const valueA = isNumericColumn ? parseFloat(cellA) : cellA;
+    const valueB = isNumericColumn ? parseFloat(cellB) : cellB;
+
+    if (newSortOrder === "asc") {
+      return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
+    } else {
+      return valueB > valueA ? 1 : valueB < valueA ? -1 : 0;
+    }
+  });
+  sortState[columnIndex] = newSortOrder;
+
+  // Re-append sorted rows to tbody
+  rows.forEach((row) => tbody.appendChild(row));
+}
 
 function loadItemList() {
   document.getElementById("itemList").innerHTML = "";
@@ -285,6 +300,7 @@ function thanksTo() {
 }
 
 thanksTo();
+window.sortTable = sortTable;
 window.saveApiToken = saveApiToken;
 window.updateStorage = updateStorage;
 window.getDataFromApi = getDataFromApi;
