@@ -90,7 +90,6 @@ async function printTable() {
   }
 
   // Populate the table
-  var resultTable = document.getElementById("calculatedTable");
   console.log(table);
   table.forEach(function (table) {
     var row = tableBody.insertRow(-1);
@@ -113,8 +112,8 @@ function sortTable(columnIndex) {
 
   // Sort rows in descending order
   rows.sort((rowA, rowB) => {
-    const cellA = rowA.children[columnIndex].innerText;
-    const cellB = rowB.children[columnIndex].innerText;
+    const cellA = rowA.children[columnIndex].innerText.replace(/,/g, "");
+    const cellB = rowB.children[columnIndex].innerText.replace(/,/g, "");
 
     // Parse values as numbers for numeric columns
     const valueA = isNumericColumn ? parseFloat(cellA) : cellA;
@@ -127,7 +126,6 @@ function sortTable(columnIndex) {
     }
   });
   sortState[columnIndex] = newSortOrder;
-
   // Re-append sorted rows to tbody
   rows.forEach((row) => tbody.appendChild(row));
 }
