@@ -96,8 +96,8 @@ async function printTable() {
     var row = tableBody.insertRow(-1);
     row.insertCell(0).innerText = table.name;
     row.insertCell(1).innerText = table.upgrade;
-    row.insertCell(2).innerText = table.price;
-    row.insertCell(3).innerText = table.specup;
+    row.insertCell(2).innerText = table.price.toLocaleString();
+    row.insertCell(3).innerText = table.specup.toLocaleString();
   });
 }
 let sortState = {};
