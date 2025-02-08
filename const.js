@@ -518,4 +518,10 @@ export const table = [
     inputs: ["상단일", "상상"],
     calculation: (values) => values["상상"] - values["상단일"],
   },
+  {
+    name: "77돌->97돌(평균크리 5500골,돌 300골드 가정)",
+    upgrade: 3.1,
+    inputs: [],
+    calculation: () => 3310000,
+  },
 ];
