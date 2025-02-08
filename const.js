@@ -68,6 +68,13 @@ export const table = [
     calculation: () => 400000 * 20,
   },
   {
+    name: "7->8작 (예의보석)",
+    upgrade: 0.187,
+    inputs: ["8레벨 작열의 보석", "7레벨 작열의 보석"],
+    calculation: (values) =>
+      values["8레벨 작열의 보석"] - values["7레벨 작열의 보석"],
+  },
+  {
     name: "7->8작 (1개-사이클단축)",
     upgrade: 2.19,
     inputs: ["8레벨 작열의 보석", "7레벨 작열의 보석"],
@@ -80,6 +87,13 @@ export const table = [
     inputs: ["8레벨 작열의 보석", "7레벨 작열의 보석"],
     calculation: (values) =>
       (values["8레벨 작열의 보석"] - values["7레벨 작열의 보석"]) * 2,
+  },
+  {
+    name: "7->8겁 (딜지분 5%)",
+    upgrade: 0.34,
+    inputs: ["8레벨 겁화의 보석", "7레벨 겁화의 보석"],
+    calculation: (values) =>
+      values["8레벨 겁화의 보석"] - values["7레벨 겁화의 보석"],
   },
   {
     name: "7->8겁 (딜지분 20%)",
@@ -156,56 +170,56 @@ export const table = [
 
   {
     name: "무기18,19강 (최적)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "19").optimal,
   },
   {
     name: "무기20,21강 (최적)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "21").optimal,
   },
   {
     name: "무기22,23강 (최적)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "23").optimal,
   },
   {
     name: "무기24,25강 (최적)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "25").optimal,
   },
 
   {
     name: "무기18,19강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "19").bind,
   },
   {
     name: "무기20,21강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "21").bind,
   },
   {
     name: "무기22,23강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "23").bind,
   },
   {
     name: "무기24,25강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 1.3,
+    upgrade: 1.12,
     inputs: [],
     calculation: () => refineCal.calculate("weapon", "t4_1590", "25").bind,
   },
   {
     name: "무기 상급재련1~10(선조턴 숨결)",
-    upgrade: 2.6,
+    upgrade: 2.24,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -225,7 +239,7 @@ export const table = [
   },
   {
     name: "무기 상급재련11~20(선조턴 숨결)",
-    upgrade: 2.6,
+    upgrade: 2.24,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -245,7 +259,7 @@ export const table = [
   },
   {
     name: "무기 상급재련21~30(선조턴 숨결)",
-    upgrade: 3.5,
+    upgrade: 2.94,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -265,7 +279,7 @@ export const table = [
   },
   {
     name: "무기 상급재련31~40(선조턴 숨결)",
-    upgrade: 3.9,
+    upgrade: 3.3,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -310,25 +324,25 @@ export const table = [
   // },
   {
     name: "방어구15,16강 (최적)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "16").optimal,
   },
   {
     name: "방어구17,18,19강 (최적)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "19").optimal,
   },
   {
     name: "방어구20,21강 (최적)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "21").optimal,
   },
   {
     name: "방어구22,23강 (최적)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "23").optimal,
   },
@@ -359,31 +373,31 @@ export const table = [
 
   {
     name: "방어구15,16강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "16").bind,
   },
   {
     name: "방어구17,18,19강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "19").bind,
   },
   {
     name: "방어구20,21강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "21").bind,
   },
   {
     name: "방어구22,23강 (골드+아비도스+숨결 외 귀속)",
-    upgrade: 0.19,
+    upgrade: 0.184,
     inputs: [],
     calculation: () => refineCal.calculate("armor", "t4_1590", "23").bind,
   },
   {
     name: "방어구 상급재련1~10(선조턴 숨결)",
-    upgrade: 0.38,
+    upgrade: 0.37,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -403,7 +417,7 @@ export const table = [
   },
   {
     name: "방어구 상급재련11~20(선조턴 숨결)",
-    upgrade: 0.38,
+    upgrade: 0.37,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -423,7 +437,7 @@ export const table = [
   },
   {
     name: "방어구 상급재련21~30(선조턴 숨결)",
-    upgrade: 0.6,
+    upgrade: 0.49,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
@@ -443,7 +457,7 @@ export const table = [
   },
   {
     name: "방어구 상급재련31~40(선조턴 숨결)",
-    upgrade: 0.7,
+    upgrade: 0.57,
     inputs: [
       "운명의 파편",
       "운명의 돌파석",
