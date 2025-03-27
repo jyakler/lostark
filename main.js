@@ -37,7 +37,7 @@ function updateStorage(marketData = 0) {
     });
   } else {
     inputs = marketData;
-    scatter = 1e9;
+    scatter = min(1e9, localStorage.getItem("운명의 파편"));
     inputs.forEach((input) => {
       if (input.Name === "운명의 파편 주머니(소)") {
         scatter = Math.min(scatter, input.YDayAvgPrice / 1000);
@@ -93,12 +93,15 @@ async function printTable() {
   console.log(table);
   table.forEach(function (table) {
     var row = tableBody.insertRow(-1);
+
+    row.style.backgroundColor = table.color ?? "gray";
     row.insertCell(0).innerText = table.name;
     row.insertCell(1).innerText = table.upgrade;
     row.insertCell(2).innerText = table.price.toLocaleString();
     row.insertCell(3).innerText = table.specup.toLocaleString();
   });
 }
+
 let sortState = {};
 function sortTable(columnIndex) {
   const tbody = document.querySelector("#calculatedTable tbody");
@@ -183,26 +186,36 @@ function loadData() {
 // 거래소
 async function getMarketPrice() {
   const api = localStorage.getItem("apiToken");
-  console.log(api);
-  const marketResult = await axios.post(
-    host + marketPath,
-    {
-      Sort: "YDAY_AVG_PRICE",
-      CategoryCode: 50000, // 강화재료
-      ItemTier: 4,
-      PageNo: 1,
-      SortCondition: "ASC",
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: api,
+  // console.log(api);
+  let pageNo = 1;
+  while (1) {
+    const marketResult = await axios.post(
+      host + marketPath,
+      {
+        Sort: "YDAY_AVG_PRICE",
+        CategoryCode: 50000, // 강화재료
+        ItemTier: 4,
+        PageNo: pageNo,
+        SortCondition: "ASC",
       },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: api,
+        },
+      }
+    );
+    console.log(JSON.stringify(marketResult.data));
+    updateStorage(marketResult.data.Items);
+    pageNo++;
+    if (
+      marketResult.data.TotalCount <=
+      marketResult.data.PageNo * marketResult.data.PageSize
+    ) {
+      break;
     }
-  );
-  console.log(JSON.stringify(marketResult.data));
-  updateStorage(marketResult.data.Items);
+  }
 }
 
 // 경매장
