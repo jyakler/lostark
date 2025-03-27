@@ -37,7 +37,7 @@ function updateStorage(marketData = 0) {
     });
   } else {
     inputs = marketData;
-    scatter = min(1e9, localStorage.getItem("운명의 파편"));
+    scatter = Math.min(1e9, localStorage.getItem("운명의 파편"));
     inputs.forEach((input) => {
       if (input.Name === "운명의 파편 주머니(소)") {
         scatter = Math.min(scatter, input.YDayAvgPrice / 1000);
