@@ -152,6 +152,7 @@ function loadItemList() {
       (item !== "운명의 파편 주머니(중)")
     ) {
       itemListDiv.appendChild(label);
+      itemListDiv.appendChild(br);
       itemListDiv.appendChild(input);
       itemListDiv.appendChild(br);
     }
