@@ -259,7 +259,7 @@ export const table = [
     calculation: () => refineCal.calculate("weapon", "t4_1590", "25").bind,
   },
   {
-    name: "무기 상급재련1~10(선조턴 숨결)",
+    name: "무기 상급재련1~10(선조턴 숨결+책)",
     upgrade: 2.24,
     color: tableColor.up_weapon,
     inputs: [
@@ -268,19 +268,21 @@ export const table = [
       "아비도스 융화 재료",
       "운명의 파괴석",
       "용암의 숨결",
+      "장인의 야금술 : 1단계",
     ],
     calculation: (values) =>
       (
-        values["운명의 파괴석"] * 16005 +
-        values["운명의 돌파석"] * 427 +
-        values["아비도스 융화 재료"] * 640 +
-        values["운명의 파편"] * 213394 +
-        values["용암의 숨결"] * 50 +
-        48014
+        values["운명의 파괴석"] * 13783 +
+        values["운명의 돌파석"] * 368 +
+        values["아비도스 융화 재료"] * 551 +
+        values["운명의 파편"] * 183776 +
+        values["용암의 숨결"] * 43 +
+        values["장인의 야금술 : 1단계"] * 7 +
+        41350
       ).toFixed(0),
   },
   {
-    name: "무기 상급재련11~20(선조턴 숨결)",
+    name: "무기 상급재련11~20(선조턴 숨결+책)",
     upgrade: 2.24,
     color: tableColor.up_weapon,
     inputs: [
@@ -289,15 +291,17 @@ export const table = [
       "아비도스 융화 재료",
       "운명의 파괴석",
       "용암의 숨결",
+      "장인의 야금술 : 2단계",
     ],
     calculation: (values) =>
       (
-        values["운명의 파괴석"] * 29342 +
-        values["운명의 돌파석"] * 587 +
-        values["아비도스 융화 재료"] * 694 +
-        values["운명의 파편"] * 426788 +
-        values["용암의 숨결"] * 75 +
-        106697
+        values["운명의 파괴석"] * 25269 +
+        values["운명의 돌파석"] * 505 +
+        values["아비도스 융화 재료"] * 597 +
+        values["운명의 파편"] * 367552 +
+        values["용암의 숨결"] * 65 +
+        values["장인의 야금술 : 2단계"] * 7 +
+        91888
       ).toFixed(0),
   },
   {
@@ -424,7 +428,7 @@ export const table = [
     calculation: () => refineCal.calculate("armor", "t4_1590", "23").bind,
   },
   {
-    name: "방어구 상급재련1~10(선조턴 숨결)",
+    name: "방어구 상급재련1~10(선조턴 숨결+책)",
     upgrade: 0.37,
     color: tableColor.up_armor,
     inputs: [
@@ -433,19 +437,21 @@ export const table = [
       "아비도스 융화 재료",
       "운명의 수호석",
       "빙하의 숨결",
+      "장인의 재봉술 : 1단계",
     ],
     calculation: (values) =>
       (
-        values["운명의 수호석"] * 13337 +
-        values["운명의 돌파석"] * 320 +
-        values["아비도스 융화 재료"] * 373 +
-        values["운명의 파편"] * 128036 +
-        values["빙하의 숨결"] * 50 +
-        40545
+        values["운명의 수호석"] * 11486 +
+        values["운명의 돌파석"] * 276 +
+        values["아비도스 융화 재료"] * 322 +
+        values["운명의 파편"] * 110265 +
+        values["빙하의 숨결"] * 43 +
+        values["장인의 재봉술 : 1단계"] * 7 +
+        34917
       ).toFixed(0),
   },
   {
-    name: "방어구 상급재련11~20(선조턴 숨결)",
+    name: "방어구 상급재련11~20(선조턴 숨결+책)",
     upgrade: 0.37,
     color: tableColor.up_armor,
     inputs: [
@@ -454,14 +460,16 @@ export const table = [
       "아비도스 융화 재료",
       "운명의 수호석",
       "빙하의 숨결",
+      "장인의 재봉술 : 2단계",
     ],
     calculation: (values) =>
       (
-        values["운명의 수호석"] * 24007 +
-        values["운명의 돌파석"] * 427 +
-        values["아비도스 융화 재료"] * 427 +
-        values["운명의 파편"] * 256073 +
-        values["빙하의 숨결"] * 75 +
+        values["운명의 수호석"] * 20675 +
+        values["운명의 돌파석"] * 368 +
+        values["아비도스 융화 재료"] * 368 +
+        values["운명의 파편"] * 220531 +
+        values["빙하의 숨결"] * 65 +
+        values["장인의 재봉술 : 2단계"] * 7 +
         66159
       ).toFixed(0),
   },
